@@ -9,7 +9,7 @@ It allows printouts from the emulator to immediately be sent to a bluetooth devi
 Run the following commands in a folder of your choice.
 
 ```bash
-sudo apt install obexftp bluetoothctl
+sudo apt install obexftp bluetoothctl build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 git clone https://github.com/KiwifruitDev/gameboy-printer-emulator-server.git
 cd gameboy-printer-emulator-server
 npm install
@@ -72,7 +72,7 @@ The default palette to use as the header file and for bluetooth file transfers.
 
 ### palettes
 
-The palettes that are available to be used. The default palette must be included in this list.
+The palettes to be saved. The default palette must be included in this list.
 
 ### saveLocally
 
@@ -95,6 +95,27 @@ If this is set to `false`, the server will attempt to pair with the device using
 ### obexPushChannel
 
 The channel to use for the bluetooth connection.
+
+To check which obex PUSH channel is available, run the following command.
+
+```bash
+bluetoothctl
+# This will open the bluetoothctl console
+scan on
+# Wait for the device to appear
+scan off
+pair <MAC address>
+trust <MAC address>
+quit
+# Back to the command line
+touch test.txt
+obexftp --nopath --noconn --uuid none --bluetooth <MAC address> --channel <channel> --put test.txt
+rm test.txt
+```
+
+Replace `<MAC address>` with the bluetooth address of the device and `<channel>` with the channel to test.
+
+You may guess by counting the channel up until you recieve a bluetooth file transfer on your device.
 
 ### silent
 
