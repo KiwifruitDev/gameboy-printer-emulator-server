@@ -1,0 +1,22 @@
+{
+    "serialPort": "/dev/ttyUSB0",
+    "baudRate": 115200,
+    "defaultPalette": "grayscale",
+    "palettes": [
+        "grayscale",
+        "dmg",
+        "gameboypocket",
+        "gameboycoloreuus",
+        "gameboycolorjp",
+        "bgb",
+        "grafixkidgray",
+        "grafixkidgreen",
+        "blackzero"
+    ],
+    "saveLocally": true,
+    "bluetoothEnabled": true,
+    "bluetoothAddress": "74:74:46:D2:32:57",
+    "bluetoothPaired": false,
+    "obexPushChannel": 7,
+    "silent": true
+}
